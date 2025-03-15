@@ -1,0 +1,37 @@
+.chat {
+    display: flex;
+    margin: 2%;
+        justify-content: space-around;
+    }
+    
+    .tile {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+    }
+    
+    .icon {
+        width: 40px;
+        display: flex;
+        justify-content: center;
+        // border: 1px solid black;
+    }
+    
+    .chatIcon {
+        width: 40px;
+    }
+    
+    .page {
+        text-align: center;
+    }
+    
+    .enterChat {
+        margin-left: 20%;
+    }
+    
+    .chatSubmit {
+        display: flex;
+        justify-content: center;
+        margin-right: 20%;
+        gap: 10px;
+}
