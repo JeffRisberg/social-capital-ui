@@ -1,31 +1,31 @@
-var {dataSourcesList} = require('../mocks/students.js');
+var {studentsList} = require('../mocks/students.js');
 var nextId = 100;
 
-module.exports.getDataSources = async (req, res) => {
-    console.log("sending dataSources")
+module.exports.getStudents = async (req, res) => {
+    console.log("sending students")
 
     res.send({
         'status': 'ok',
-        data: dataSourcesList
+        data: studentsList
     });
 }
 
-module.exports.postDataSource = async (req, res) => {
+module.exports.postStudent = async (req, res) => {
     const name = req.body.name
     console.log("posted " + name)
 
-    const dataSource = {id: nextId++, name: name}
+    const student = {id: nextId++, name: name}
 
-    dataSourcesList.push(dataSource)
+    studentsList.push(student)
 
-    res.send(dataSource);
+    res.send(student);
 }
 
-module.exports.deleteDataSource = async (req, res) => {
+module.exports.deleteStudent = async (req, res) => {
     const id = req.body.id
     console.log("delete " + id)
 
-    dataSourcesList = dataSourcesList.filter(item => item.id !== id)
+    studentsList = studentsList.filter(item => item.id !== id)
 
     res.send({
         'status': 'ok',
