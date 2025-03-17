@@ -1,4 +1,4 @@
-var {dataSourcesList} = require('../mocks/dataSources.js');
+var {dataSourcesList} = require('../mocks/students.js');
 var nextId = 100;
 
 module.exports.getDataSources = async (req, res) => {
