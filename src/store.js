@@ -1,13 +1,13 @@
 import {configureStore} from '@reduxjs/toolkit';
-import botsReducer from './containers/NewBot/botsSlice';
-import dataSourcesReducer from './components/dataSourcesSlice';
+import botsReducer from './containers/OverTime/botsSlice';
+import studentsReducer from './containers/ByStudent/studentsSlice';
 import tagsReducer from './containers/Tags/tagsSlice'
 
 
 export const store = configureStore({
    reducer: {
       bots: botsReducer,
-      dataSources: dataSourcesReducer,
+      students: studentsReducer,
       tags: tagsReducer
    },
 });

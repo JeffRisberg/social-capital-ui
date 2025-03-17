@@ -6,9 +6,7 @@ import AdbIcon from '@mui/icons-material/Adb';
 import icon from '../../assets/img/chatbot_icon.jpeg';
 import TextField from '@mui/material/TextField';
 import FormControl from '@mui/material/FormControl';
-import ResponsiveAppBar from '../LandingPage/AppBar';
-import {DataSourceList} from '../../components/DataSourceList';
-import {postAsk} from "../NewBot/botsSlice";
+import ResponsiveAppBar from '../ByStudent/AppBar';
 import './ChatPage.style.scss'
 
 const ChatTile = ({isBot, text}) => {
@@ -35,7 +33,7 @@ export default function ChatPage() {
         //dispatch(postAsk({entered}))
         console.log(event)
         setChats(["alpha", "beta"])
-        dispatch(postAsk({"text": "I need help with Apple"}))
+        //dispatch(postAsk({"text": "I need help with Apple"}))
 
         // setEntered("")
     }
@@ -52,7 +50,6 @@ export default function ChatPage() {
                         <ChatTile key={i} isBot={false} text={c}/>
                     )}
                 </div>
-                <DataSourceList/>
             </div>
             <div className='chatSubmit'>
                 <Box

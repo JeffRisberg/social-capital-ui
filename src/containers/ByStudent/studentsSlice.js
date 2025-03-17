@@ -3,28 +3,28 @@ import {METHOD_TYPE} from "../../utils/constants";
 import {fetchRequest} from "../../utils/axiosOptions";
 import {localhostInstance} from "../../utils/axiosInstance";
 
-export const fetchTags = createAsyncThunk('fetchTags', async () => {
-   const path = `v1/tags`;
+export const fetchStudents = createAsyncThunk('fetchStudents', async () => {
+   const path = `v1/students`;
    const response = await localhostInstance(fetchRequest(METHOD_TYPE['GET'], path, {}))
    return response.data
 })
 
-export const addTag = createAsyncThunk('addTag', async ({name}) => {
-   const path = `v1/tags`;
+export const addStudent = createAsyncThunk('addStudent', async ({name}) => {
+   const path = `v1/students`;
    const payload = {name}
    const response = await localhostInstance(fetchRequest(METHOD_TYPE['POST'], path, payload))
    return response.data
 })
 
-export const deleteTag = createAsyncThunk('deleteTag', async ({id}) => {
-   const path = `v1/tags`;
+export const deleteStudent = createAsyncThunk('deleteStudent', async ({id}) => {
+   const path = `v1/students`;
    const payload = {id}
    const response = await localhostInstance(fetchRequest(METHOD_TYPE['DELETE'], path, payload))
    return response.data
 })
 
-export const tagsSlice = createSlice({
-   name: 'tags',
+export const studentsSlice = createSlice({
+   name: 'students',
    initialState: {
       loading: false,
       selected: null,
@@ -33,43 +33,43 @@ export const tagsSlice = createSlice({
    },
    reducers: {
       select: (state, action) => {
-         console.log("selecting a tag in reducer " + action.payload);
+         console.log("selecting a student in reducer " + action.payload);
          state.selected = action.payload
       }
    },
    extraReducers: builder => {
       builder
-         .addCase(fetchTags.pending, (state, action) => {
+         .addCase(fetchStudents.pending, (state, action) => {
             console.log("fetch pending")
             state.loading = true
          })
-         .addCase(fetchTags.fulfilled, (state, action) => {
+         .addCase(fetchStudents.fulfilled, (state, action) => {
             console.log("fetch fulfilled")
             state.loading = false
             state.results = action.payload || []
             console.log(state.results)
          })
-         .addCase(fetchTags.rejected, (state, action) => {
+         .addCase(fetchStudents.rejected, (state, action) => {
             console.log("fetch rejected")
             state.loading = false
             state.results = []
             state.errors = [...state.errors, action.error]
          })
-         .addCase(addTag.pending, (state, action) => {
+         .addCase(addStudent.pending, (state, action) => {
             console.log("add pending")
             state.loading = true
          })
-         .addCase(addTag.fulfilled, (state, action) => {
+         .addCase(addStudent.fulfilled, (state, action) => {
             console.log("add fulfilled")
             state.loading = false
             state.results.data?.push(action.payload);
          })
-         .addCase(addTag.rejected, (state, action) => {
+         .addCase(addStudent.rejected, (state, action) => {
             console.log("add rejected")
             state.loading = false
             state.errors = [...state.errors, action.error]
          })
-         .addCase(deleteTag.fulfilled, (state, action) => {
+         .addCase(deleteStudent.fulfilled, (state, action) => {
             console.log("delete fulfilled")
             const removedId = action.meta.arg.id
             state.results.data = state.results.data.filter(item => item.id !== removedId)
@@ -77,6 +77,6 @@ export const tagsSlice = createSlice({
    }
 })
 
-export const {select} = tagsSlice.actions
+export const {select} = studentsSlice.actions
 
-export default tagsSlice.reducer
+export default studentsSlice.reducer

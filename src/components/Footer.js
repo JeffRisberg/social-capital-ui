@@ -15,7 +15,7 @@ export function Footer(props) {
    return (
       <div>
          <Typography>
-            Example project using React Material UI 5
+            Making Waves Education Foundation:  Social Capital Metrics Tracking
          </Typography>
       </div>
    );

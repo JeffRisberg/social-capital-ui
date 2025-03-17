@@ -19,7 +19,7 @@ class Home extends Component {
             <Card>
                <CardContent>
                   <div>
-                     <h2>MUI07 Example</h2>
+                     <h2>Social Capital Tracking</h2>
                      <div className="row">
                         <div className="col-md-4">
                            Uses React MUI 5 for presentation

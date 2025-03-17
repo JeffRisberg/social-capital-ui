@@ -4,9 +4,8 @@ import Paper from '@mui/material/Paper';
 import {Navigation} from "./components/Navigation";
 import {Footer} from './components/Footer';
 import Home from './containers/Home';
-import LandingPage from './containers/LandingPage/LandingPage';
-import NewBotPage from './containers/NewBot/NewBotPage';
-import ChatPage from "./containers/Chat/ChatPage";
+import ByStudentPage from './containers/ByStudent/ByStudentPage';
+import OverTimePage from './containers/OverTime/OverTimePage';
 
 import lightBlue from '@mui/material/colors/lightBlue';
 import grey from '@mui/material/colors/grey';
@@ -56,9 +55,8 @@ export default function App() {
             <Navigation/>
             <Routes>
                <Route path="/" element={<Home/>}/>
-               <Route path="landingPage" element={<LandingPage/>}/>
-               <Route path="newBot" element={<NewBotPage/>}/>
-               <Route path="chat" element={<ChatPage/>}/>
+               <Route path="byStudent" element={<ByStudentPage/>}/>
+               <Route path="overTime" element={<OverTimePage/>}/>
             </Routes>
             <Footer/>
          </Paper>

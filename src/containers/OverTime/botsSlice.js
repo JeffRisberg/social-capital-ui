@@ -1,7 +1,7 @@
 import {createAsyncThunk, createSlice} from '@reduxjs/toolkit'
-import {METHOD_TYPE} from "../../Utils/constants";
-import {fetchRequest} from "../../Utils/axiosOptions";
-import {localhostInstance} from "../../Utils/axiosInstance";
+import {METHOD_TYPE} from "../../utils/constants";
+import {fetchRequest} from "../../utils/axiosOptions";
+import {localhostInstance} from "../../utils/axiosInstance";
 
 export const fetchBots = createAsyncThunk('fetchBots', async () => {
    console.log("fetchBots ---")
