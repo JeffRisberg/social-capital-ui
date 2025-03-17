@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
+import {CardHeader} from "@mui/material";
 
 /**
  * The welcome screen
@@ -17,20 +18,10 @@ class Home extends Component {
       return (
          <div>
             <Card>
+               <CardHeader title="Social Capital Tracking"/>
                <CardContent>
-                  <div>
-                     <h2>Social Capital Tracking</h2>
-                     <div className="row">
-                        <div className="col-md-4">
-                           Uses React MUI 5 for presentation
-                        </div>
-                        <div className="col-md-4">
-                           Uses Redux for data management
-                        </div>
-                        <div className="col-md-4">
-                           Uses Redux Toolkit for Redux integration
-                        </div>
-                     </div>
+                  <div style={styles.grid}>
+                     Welcome to the Social Capital Tracking System.
                   </div>
                </CardContent>
             </Card>
