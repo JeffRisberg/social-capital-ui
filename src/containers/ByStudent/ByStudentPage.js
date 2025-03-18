@@ -20,6 +20,7 @@ import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import {fetchStudents} from "./studentsSlice";
 import './ByStudentPage.style.scss'
+import {BarChart} from "@mui/icons-material";
 
 function StudentCard({student}) {
    return (
@@ -52,7 +53,7 @@ export default function ByStudentPage() {
 
    React.useEffect(() => {
       dispatch(fetchStudents())
-   });
+   }, []);
 
    const [open, setOpen] = React.useState(false);
    const handleOpen = () => setOpen(true);
@@ -69,6 +70,17 @@ export default function ByStudentPage() {
       boxShadow: 24,
       p: 4,
    };
+
+   const uData = [4000, 3000, 2000, 2780];
+   const pData = [2400, 1398, 9800, 3908];
+   const amtData = [2400, 2210, 2290, 2000];
+
+   const xLabels = [
+      'Dimension 1',
+      'Dimension 2',
+      'Dimension 3',
+      'Dimension 4',
+   ];
 
    return (
       <div style={{padding: '24px', gap: '24px'}}>
@@ -94,14 +106,17 @@ export default function ByStudentPage() {
 
          <Card>
             <CardHeader title="Social Capital Metrics"/>
-            <CardContent>
-              {/* <BarChart width={500} height={300} data={data}>
-                  <XAxis dataKey="name"/>
-                  <YAxis/>
-                  <Tooltip/>
-                  <Legend/>
-                  <Bar dataKey="value" fill="#8884d8"/>
-               </BarChart>*/}
+            <CardContent sx={{border: "1px solid black"}}>
+               <BarChart
+                  width={1200}
+                  height={800}
+                  series={[
+                     { data: pData, label: 'pv', stack: 'stack1' },
+                     { data: amtData, label: 'amt' },
+                     { data: uData, label: 'uv', stack: 'stack1' },
+                  ]}
+                  xAxis={[{ data: xLabels, scaleType: 'band' }]}
+               />
             </CardContent>
          </Card>
 
