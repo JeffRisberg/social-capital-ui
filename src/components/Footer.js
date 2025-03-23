@@ -7,14 +7,17 @@ const styles = {
       padding: '6px',
       background: '#eee'
    },
+   item: {
+      fontWeight: '700'
+   },
 };
 
-export function Footer(props) {
-   const {classes} = props;
+export function Footer() {
+   const classes = styles;
 
    return (
-      <div>
-         <Typography>
+      <div sx={classes.root}>
+         <Typography sx={classes.item}>
             Making Waves Education Foundation:  Social Capital Metrics Tracking
          </Typography>
       </div>
