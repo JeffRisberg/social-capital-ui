@@ -1,7 +1,8 @@
-var {tagsList} = require('../mocks/tags.js');
+import {tagsList} from "../mocks/tags.mjs";
+
 var nextId = 100;
 
-module.exports.getTags = async (req, res) => {
+export const getTags = async (req, res) => {
    console.log("sending tags")
 
    res.send({
@@ -10,7 +11,7 @@ module.exports.getTags = async (req, res) => {
    });
 }
 
-module.exports.postTag = async (req, res) => {
+export const postTag = async (req, res) => {
    const name = req.body.name
    console.log("posted " + name)
 
@@ -21,11 +22,11 @@ module.exports.postTag = async (req, res) => {
    res.send(tag);
 }
 
-module.exports.deleteTag = async (req, res) => {
+export const deleteTag = async (req, res) => {
    const id = req.body.id
    console.log("delete " + id)
 
-   tagsList = tagsList.filter(item => item.id !== id)
+   //tagsList = tagsList.filter(item => item.id !== id)
 
    res.send({
       'status': 'ok',

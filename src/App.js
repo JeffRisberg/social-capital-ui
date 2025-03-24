@@ -18,7 +18,7 @@ const theme = createTheme({
       useNextVariants: true,
    },
    palette: {
-      primary: '#77acee',
+      primary: lightBlue,
       secondary: grey,
       text: {
          primary: '#000',

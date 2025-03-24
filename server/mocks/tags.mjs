@@ -1,4 +1,4 @@
-module.exports.tagsList = [
+export const tagsList = [
    {
       "name": "Basic",
       "id": 1
