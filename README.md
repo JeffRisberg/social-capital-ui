@@ -2,6 +2,16 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Setup
+
+Create a .env file using the .env-sample file
+
+## Start server
+
+```
+node server/index.mjs
+```
+
 ## Available Scripts
 
 In the project directory, you can run:
