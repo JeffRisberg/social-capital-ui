@@ -4,6 +4,7 @@ import ArrowDropDownOutlinedIcon from '@mui/icons-material/ArrowDropDownOutlined
 import {logout} from '../Redux/Actions/login.actions';
 import {Box, Menu, MenuItem, Typography} from '@mui/material';
 import {FETCH_USER_DETAILS_SUCCESS} from "../Redux/Actions/constants";
+
 export const UserMenu = () => {
 
     const dispatch = useDispatch();

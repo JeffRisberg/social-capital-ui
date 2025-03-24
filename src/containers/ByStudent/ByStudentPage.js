@@ -19,32 +19,15 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import {fetchStudents} from "./studentsSlice";
-import './ByStudentPage.style.scss'
 import {BarChart} from "@mui/icons-material";
 
-function StudentCard({student}) {
-   return (
-      <Card sx={{minWidth: 275}}>
-         <CardContent>
-            <Typography sx={{fontSize: 14}} color="text.secondary" gutterBottom>
-               {student.dimension1}
-            </Typography>
-            <Typography>
-               {student.dimension2}
-            </Typography>
-            <Typography>
-               {student.dimension3}
-            </Typography>
-            <Typography>
-               {student.dimension4}
-            </Typography>
-         </CardContent>
-         <CardActions>
-            <Button size="small">Learn More</Button>
-         </CardActions>
-      </Card>
-   );
-}
+
+const styles = {
+   bgcolor: 'background.paper',
+   border: '2px solid #000',
+   boxShadow: 24,
+   p: 4,
+};
 
 export default function ByStudentPage() {
    const dispatch = useDispatch();
@@ -58,18 +41,6 @@ export default function ByStudentPage() {
    const [open, setOpen] = React.useState(false);
    const handleOpen = () => setOpen(true);
    const handleClose = () => setOpen(false);
-
-   const style = {
-      position: 'absolute',
-      top: '50%',
-      left: '50%',
-      transform: 'translate(-50%, -50%)',
-      width: 400,
-      bgcolor: 'background.paper',
-      border: '2px solid #000',
-      boxShadow: 24,
-      p: 4,
-   };
 
    const uData = [4000, 3000, 2000, 2780];
    const pData = [2400, 1398, 9800, 3908];
@@ -88,7 +59,7 @@ export default function ByStudentPage() {
             <CardHeader title="Student Social Capital Report - By Student"/>
             <CardContent>
                <div style={{display: 'flex', gap: '16px'}}>
-                  <TextField label="Search by student name" variant="outlined" fullWidth/>
+                  <TextField label="Search by student id" variant="outlined" fullWidth/>
                   <Select defaultValue="all" variant="outlined">
                      <MenuItem value="all">All Years</MenuItem>
                      <MenuItem value="2023">2023</MenuItem>
@@ -126,7 +97,7 @@ export default function ByStudentPage() {
                <Table>
                   <TableHead>
                      <TableRow>
-                        <TableCell>Name</TableCell>
+                        <TableCell>Student Id</TableCell>
                         <TableCell>Peer Networks</TableCell>
                         <TableCell>Mentorship Access</TableCell>
                         <TableCell>Community Engagement</TableCell>
@@ -134,16 +105,28 @@ export default function ByStudentPage() {
                   </TableHead>
                   <TableBody>
                      <TableRow>
-                        <TableCell>John Doe</TableCell>
+                        <TableCell>#123452</TableCell>
                         <TableCell>High</TableCell>
                         <TableCell>Medium</TableCell>
                         <TableCell>High</TableCell>
                      </TableRow>
                      <TableRow>
-                        <TableCell>Jane Smith</TableCell>
+                        <TableCell>#125032</TableCell>
+                        <TableCell>Medium</TableCell>
+                        <TableCell>Medium</TableCell>
+                        <TableCell>Low</TableCell>
+                     </TableRow>
+                     <TableRow>
+                        <TableCell>#125099</TableCell>
                         <TableCell>Medium</TableCell>
                         <TableCell>High</TableCell>
-                        <TableCell>Low</TableCell>
+                        <TableCell>Medium</TableCell>
+                     </TableRow>
+                     <TableRow>
+                        <TableCell>#124672</TableCell>
+                        <TableCell>Medium</TableCell>
+                        <TableCell>High</TableCell>
+                        <TableCell>High</TableCell>
                      </TableRow>
                   </TableBody>
                </Table>

@@ -1,11 +1,21 @@
 import * as React from 'react';
-import TextField from '@mui/material/TextField';
-import {Button, Card, CardHeader, MenuItem, Table, TableBody, TableCell, TableHead, TableRow} from '@mui/material';
 import {useDispatch} from "react-redux";
+import {Button, Card, CardContent, CardHeader, Grid, MenuItem, Select} from '@mui/material';
 import {postBot} from "./botsSlice";
-import CardContent from "@mui/material/CardContent";
-import Select from "@mui/material/Select";
-import './OverTimePage.style.scss'
+
+import {DimensionCard} from "../../components/DimensionCard";
+
+import {DIMENSIONS} from "../../utils/constants";
+
+const styles = {
+   item: {
+      background: '#e0e0e0'
+   },
+   itemContent: {
+      height: '70px',
+      fontFamily: 'Arial'
+   }
+};
 
 export default function OverTimePage() {
    const [name, setName] = React.useState('');
@@ -22,6 +32,8 @@ export default function OverTimePage() {
       dispatch(postBot({name, domain, url}))
    }
 
+   const classes = styles;
+
    return (
       <div style={{padding: '24px', gap: '24px'}}>
          <Card>
@@ -37,32 +49,24 @@ export default function OverTimePage() {
                </div>
             </CardContent>
          </Card>
-         <Card>
-            <CardHeader title="Trends"/>
-            <CardContent>
-               <Table>
-                  <TableHead>
-                     <TableRow>
-                        <TableCell>Peer Networks</TableCell>
-                        <TableCell>Mentorship Access</TableCell>
-                        <TableCell>Community Engagement</TableCell>
-                     </TableRow>
-                  </TableHead>
-                  <TableBody>
-                     <TableRow>
-                        <TableCell>High</TableCell>
-                        <TableCell>Medium</TableCell>
-                        <TableCell>High</TableCell>
-                     </TableRow>
-                     <TableRow>
-                        <TableCell>Medium</TableCell>
-                        <TableCell>High</TableCell>
-                        <TableCell>Low</TableCell>
-                     </TableRow>
-                  </TableBody>
-               </Table>
-            </CardContent>
-         </Card>
+
+         <Grid container spacing={4}
+               direction="row"
+               justifyContent="space-evenly"
+               alignItems="flex-start"
+               style={{minHeight: '29vh'}}
+         >
+            {DIMENSIONS.map((dimension, index) => {
+               return (
+                  <Grid item md={6} key={index}>
+                     <DimensionCard title={dimension.title} color={dimension.color}
+                                    data={dimension.metrics.map((metric, index) => {
+                                       return {label: metric.label, value: metric.default}})}
+                     />
+                  </Grid>
+               );
+            })}
+         </Grid>
       </div>
    );
 }
