@@ -13,9 +13,8 @@ import {
    TableHead,
    TableRow
 } from '@mui/material';
-import {fetchStudents} from "../../reducers/studentsSlice";
-import {postStudent} from "../../reducers/studentsSlice";
-import {BarChart, BarPlot} from '@mui/x-charts';
+import {fetchSurveys} from "../../reducers/surveysSlice";
+import {BarChart} from '@mui/x-charts';
 
 
 const styles = {
@@ -30,30 +29,33 @@ const styles = {
 export default function OverTimePage() {
    const dispatch = useDispatch();
 
-   const studentList = useSelector((state) => state.students.results)
+   const surveyList = useSelector((state) => state.surveys.results)
 
    React.useEffect(() => {
-      dispatch(fetchStudents())
+      dispatch(fetchSurveys())
    }, []);
 
-   console.log(studentList);
+   console.log(surveyList);
 
    const [name, setName] = React.useState('');
    const [domain, setDomain] = React.useState('');
    const [url, setUrl] = React.useState('');
 
-   const data = [
-      { x: 'Dimension A', y: 25 },
-      { x: 'Dimension B', y: 40 },
-      { x: 'Dimension C', y: 30 },
-      { x: 'Dimension D', y: 44 },
-      ];
+   const xAxisData = ['2022', '2023', '2024', '2025'];
+
+   const seriesData = [
+      {data: [35, 44, 44, 54]},
+      {data: [31, 43, 46, 52]},
+      {data: [39, 49, 55, 59]},
+      {data: [42, 47, 55, 62]},
+   ]
+
    const handleChange = (event) => {
       setDomain(event.target.value);
    };
 
    const submitQuery = (event) => {
-      dispatch(fetchStudents({name, domain, url}))
+      dispatch(fetchSurveys({name, domain, url}))
    }
 
    const classes = styles;
@@ -80,16 +82,11 @@ export default function OverTimePage() {
             <CardHeader title="Social Capital Metrics, for each Dimension, by Year"/>
             <CardContent sx={{border: "1px solid black", height: '230px'}}>
                <BarChart
-                  series={[
-                     { data: [35, 44, 44, 54] },
-                     { data: [31, 43, 46, 52] },
-                     { data: [39, 49, 55, 59] },
-                     { data: [42, 47, 55, 62] },
-                  ]}
+                  series={seriesData}
                   colors={['black', '#339933', '#cd3333', '#65b7e7']}
                   height={230}
-                  xAxis={[{ data: ['2022', '2023', '2024', '2025'], scaleType: 'band' }]}
-                  margin={{ top: 10, bottom: 30, left: 40, right: 10 }}
+                  xAxis={[{data: xAxisData, scaleType: 'band'}]}
+                  margin={{top: 10, bottom: 30, left: 40, right: 10}}
                />
             </CardContent>
          </Card>
