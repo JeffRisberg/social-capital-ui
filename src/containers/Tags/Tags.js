@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import {addTag, deleteTag, fetchTags, select} from "./tagsSlice";
+import {addTag, deleteTag, fetchTags, select} from "../../reducers/tagsSlice";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 

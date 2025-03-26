@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {
    Button,
    Card,
@@ -13,7 +13,8 @@ import {
    TableHead,
    TableRow
 } from '@mui/material';
-import {postBot} from "./botsSlice";
+import {fetchStudents} from "../../reducers/studentsSlice";
+import {postStudent} from "../../reducers/studentsSlice";
 import {BarChart, BarPlot} from '@mui/x-charts';
 
 
@@ -28,6 +29,14 @@ const styles = {
 };
 export default function OverTimePage() {
    const dispatch = useDispatch();
+
+   const studentList = useSelector((state) => state.students.results)
+
+   React.useEffect(() => {
+      dispatch(fetchStudents())
+   }, []);
+
+   console.log(studentList);
 
    const [name, setName] = React.useState('');
    const [domain, setDomain] = React.useState('');
@@ -44,7 +53,7 @@ export default function OverTimePage() {
    };
 
    const submitQuery = (event) => {
-      dispatch(postBot({name, domain, url}))
+      dispatch(fetchStudents({name, domain, url}))
    }
 
    const classes = styles;

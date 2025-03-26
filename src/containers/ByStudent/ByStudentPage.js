@@ -6,7 +6,7 @@ import Select from '@mui/material/Select';
 import CardContent from '@mui/material/CardContent';
 import {DimensionCard} from "../../components/DimensionCard";
 import {DIMENSIONS} from "../../utils/constants";
-import {fetchStudents} from "./studentsSlice";
+import {fetchStudents} from "../../reducers/studentsSlice";
 
 const styles = {
    bgcolor: 'background.paper',

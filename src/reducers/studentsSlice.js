@@ -1,7 +1,7 @@
 import {createAsyncThunk, createSlice} from '@reduxjs/toolkit'
-import {METHOD_TYPE} from "../../utils/constants";
-import {fetchRequest} from "../../utils/axiosOptions";
-import {localhostInstance} from "../../utils/axiosInstance";
+import {METHOD_TYPE} from "../utils/constants";
+import {fetchRequest} from "../utils/axiosOptions";
+import {localhostInstance} from "../utils/axiosInstance";
 
 export const fetchStudents = createAsyncThunk('fetchStudents', async () => {
    const path = `v1/students`;
